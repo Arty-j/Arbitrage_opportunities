@@ -22,13 +22,17 @@ This Project is built to run in Jupyter Lab:
 
 ## Data Collection and Cleaning
 
-1. **The data for this analysis was pulled using the pathlib library from 2 CSV files containing closing prices on bitstamp and coinbase spanning from 01-01-2018 to 03-31-2018.** 
+***examples shown below are for one csv file only, and one sliced date dataset, but the code is written to repeat on both csv files and all sliced data sets***
 
+1. **The data for this analysis was pulled using the pathlib library from 2 CSV files containing closing prices on bitstamp and coinbase spanning from 01-01-2018 to 03-31-2018.**
+    
+    
+    
     - It was converted to a dataframe using Pandas indexed to the date-time. 
 
-![code image csv_read]("./images/image_csv_read.png")
+![code image csv_read](./images/image_csv_read.png)
 
-2. **The data was then cleaned and standardized via the following steps (example code of one data frame only)**
+2. **The data was then cleaned and standardized via the following steps**
 
     - removing null values
     
@@ -63,7 +67,7 @@ The data was sliced to narrow down the values and time-frame of interest.
     
     - The closing price values of the two dataframes over the entire time-frame were plotted for visualization
     
-![overlay plot]("./images/overlay_plot.png)
+![overlay plot](./images/overlay_plot.png)
 
 2. **We then focused our analysis on the arbitrage spread between the two exchange values, over 3 different, 1-day periods in the datase**
 
@@ -77,9 +81,9 @@ The data was sliced to narrow down the values and time-frame of interest.
     
     - Giving focused data for plotting and seeing a visualization of the spread difference.
     
-![box_plot]("./images/box_plot_early.png) 
-![box_middle]("./images/box_plot_middle.png)
-![box_late]("./images/box_plot_late.png)
+![box_plot](./images/box_plot_early.png) 
+![box_middle](./images/box_plot_middle.png)
+![box_late](./images/box_plot_late.png)
     
 3. ** Final Step was determining the profits to be made during each time period identified above.
 
@@ -91,15 +95,16 @@ The data was sliced to narrow down the values and time-frame of interest.
     
     `profit_early = spread_return_early[spread_return_early > .01] * bitstamp['Close'].loc['2018-01-10']`
     
-![describe of profits]("./images/profit_early.png)
+![describe of profits](./images/profit_early.png)
 
-![profit per trade early plot]("./images/profit_per_trade")
+![profit per trade early plot](./images/profit_per_trade.png)
 
-    - the cumulative sum function `cum_sum` was used and results plotted for each time period to see how profits accumulated over time
+    - the cumulative sum function `cum_sum` was used and results plotted for each time period to see how profits accumulated over time, showing just how big these opportunities can be, and how fast they can dissapear
     
 `cumulative_profit_early = profit_per_trade_early.cumsum()`
 
-![cum_sum plot]("./images/cum_sum_plot")
+![cum_sum plot](./images/cum_sum_plot.png)
+
 
 ## Contributors
 
