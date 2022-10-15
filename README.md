@@ -3,19 +3,27 @@ This project showcases the Crypto Arbitrage opportunities that were happening in
 
 Zooming in on past events we can see how volitile markets can sometimes be ripe with arbitrage opportunities. When data collection & buy/sell is automated to watched carefully across multiple exchanges, and act quickly, there are profits to be made!
 
-*This project can be used to calculate the daily profit to be made when arbitrage is highand one acts quickly, vs waiting until many others take advantage of the opportunity first causing the arbitrage spread to narrow near 0.*
+*This project can be used to calculate the daily profit to be made when arbitrage is high and one acts quickly, vs waiting until many others take advantage of the opportunity causing the markets to normalize as the price difference narrows to zero.*
 
 ---
 
 ## Technologies
 
-This Project is built to run in Jupyter Lab:
+Python implementation: CPython
 
- Python 3.7 for coding
- 
- Pandas for data analysis
- 
- pathlib for importing and reading csv data files.
+Python version       : 3.7.13
+
+IPython version      : 7.31.1
+
+Compiler    : Clang 12.0.0 
+
+OS          : Darwin
+
+Release     : 21.6.0
+
+Architecture: 64bit
+
+pandas: 1.3.5
 
 
 ---
@@ -24,11 +32,11 @@ This Project is built to run in Jupyter Lab:
 
 ***examples shown below are for one csv file only, and one sliced date dataset, but the code is written to repeat on both csv files and all sliced data sets***
 
-1. **The data for this analysis was pulled using the pathlib library from 2 CSV files containing closing prices on bitstamp and coinbase spanning from 01-01-2018 to 03-31-2018.**
+1. **The data for this analysis was pulled using the pathlib library from 2 CSV files, in the Resources folder, containing closing prices on bitstamp and coinbase. Data spans from 01-01-2018 to 03-31-2018.**
     
     
     
-    - It was converted to a dataframe using Pandas indexed to the date-time. 
+    - csv files were converted to a dataframe using Pandas, indexed to the date-time. 
 
 ![code image csv_read](./images/image_csv_read.png)
 
@@ -54,16 +62,16 @@ This Project is built to run in Jupyter Lab:
 
 ## Data Analysis
 
-For Analysis, the data used for analysis was the closing price of the stocks; identified in the "Close" heading.
-The data was sliced to narrow down the values and time-frame of interest. 
+The data used for analysis was the closing price of the stocks; identified in the "Close" column.
+The data was sliced to narrow down the values and time-frame to look closer at areas of interest. 
 
 1. **First, we took a look at the closing data for the enitre time-frame in our data sets.**
 
-`bitstamp_sliced = bitstamp[['Close']].loc['2018-01-01':'2018-03-31']`
+    `bitstamp_sliced = bitstamp[['Close']].loc['2018-01-01':'2018-03-31']`
 
     - General statistics were generated
     
-`bitstamp[["Close"]].describe()`
+    `bitstamp[["Close"]].describe()`
     
     - The closing price values of the two dataframes over the entire time-frame were plotted for visualization
     
@@ -79,13 +87,13 @@ The data was sliced to narrow down the values and time-frame of interest.
     
 `arbitrage_spread_late = bitstamp['Close'].loc['2018-03-22'] - coinbase['Close'].loc['2018-03-22']`
     
-    - Giving focused data for plotting and seeing a visualization of the spread difference.
+    - Giving focused data for plotting and a visualization of the spread difference.
     
 ![box_plot](./images/box_plot_early.png) 
 ![box_middle](./images/box_plot_middle.png)
 ![box_late](./images/box_plot_late.png)
     
-3. ** Final Step was determining the profits to be made during each time period identified above.
+3. ** Final Step was determining the profits to be made during each time period identified above.**
 
     - The arbitrage spread was used for each of the the 3 days selected to find the arbitrage return. Returns were filterd for those with a value over 1%, which accounted for the buy/sell fees. 
     
@@ -104,6 +112,10 @@ The data was sliced to narrow down the values and time-frame of interest.
 `cumulative_profit_early = profit_per_trade_early.cumsum()`
 
 ![cum_sum plot](./images/cum_sum_plot.png)
+
+
+## Analysis Conclusion
+The analysis shown above is an example of how within very short timeframe, often a few weeks, the arbitrage opportunites in various markets can return a significant profit, but that the opportunity windows are short. The automation of these calculations, can give invaluable insights into when to act quickly.
 
 
 ## Contributors
